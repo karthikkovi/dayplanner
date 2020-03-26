@@ -96,4 +96,15 @@ $(document).ready(function(){
         $plannerDiv.append($rowDiv);
       };
 
+      $(document).on('click','i', function(e) {
+        e.preventDefault();  
+    
+        let $index = $(this).attr('save-id');
+        let inputId = '#input-'+$index;
+        let $value = $(inputId).val();
+    
+        planArray[$index] = $value;
+    
+        localStorage.setItem("storedPlans", JSON.stringify(planArray));
+      });  
 })

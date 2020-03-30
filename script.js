@@ -31,9 +31,9 @@ $(document).ready(function () {
 
     // format hours for display
     let ampm = "";
-
+    
     if (hour > 12) {
-      ampm = "pm"
+      ampm = "pm";
       hour -= 12;
     } else {
       ampm = "am"
@@ -53,31 +53,33 @@ $(document).ready(function () {
     // populate timeBox with time
     $timeBox.text(`${hour} ${ampm}`);
 
-    // appending elementes to timebox
+    // appending elements to timebox
     $rowDiv.append($timeDiv);
     $timeDiv.append($timeBox);
 
-    // row components
+    // Creating input groups
     let $dailyPlan = $("<input>");
     $dailyPlan.addClass("input-group");
     $dailyPlan.attr("id", "input-"+i);
 
-    // // creating column to input text
+    // creating 9 width col for input text
     let $inputDiv = $("<div>");
     $inputDiv.addClass("col-md-9");
 
-    // // add col width and row component to row
+    // add input column to the row
     $rowDiv.append($inputDiv);
     $inputDiv.append($dailyPlan);
+
+    // Creating the 1 width column for the save buttons.
 
     let $saveDiv = $("<div>");
     $saveDiv.addClass("col-md-1");
 
     let $saveBtn = $("<i>");
     $saveBtn.attr("id", `saveid-${i}`);
-    $saveBtn.attr("class", "fas fa-save saveIcon btn");
+    $saveBtn.addClass("fas fa-save saveIcon btn");
 
-    // add col width and row component to row
+    // add save column to the row
     $rowDiv.append($saveDiv);
     $saveDiv.append($saveBtn);
 
@@ -85,23 +87,27 @@ $(document).ready(function () {
     $plannerDiv.append($rowDiv);
   }};
 
+  // Function to store plans when the button is clicked
   $(document).on("click", "i", function (e) {
     e.preventDefault();
 
+    // Loop to read data from the input fields.
     for(let i=0; i<10; i++){
     planArray[i] = $(`#input-${i}`).val()
     }
+    // Set the local storage with the plans
     localStorage.setItem("storedPlans", JSON.stringify(planArray));
   });
 
+  // Function to display stored plans.
   function displayStoredPlans() {
 
-    planArray = JSON.parse(localStorage.getItem("storedPlans"));
-    console.log(planArray);
-    console.log(planArray[0])
+    // Reading the value from storage
+    planArray = storedPlans;
+    
+    // Loop to populate the data
     for (let i=0; i<10; i++) {
       $(`#input-${i}`).val(planArray[i])
-
     }
   }
 })

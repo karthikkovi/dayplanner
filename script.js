@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  // Array to store plans to build the calender
+  // Array to store plans to store and display the values
   let planArray;
 
   //Getting current date using Moment and updating it in HTML
@@ -10,21 +10,20 @@ $(document).ready(function () {
   //Reading any existing stored plans
   let storedPlans = JSON.parse(localStorage.getItem("storedPlans"));
 
-  //building array for planner
+  // function to create the planner
+  createDiv();
 
   if (storedPlans === null) {
     planArray = new Array(9);
   } else {
-    planArray = storedPlans;
+    displayStoredPlans();
   }
 
+
+  function createDiv() {
   // reading the Planner div from HTML
 
   const $plannerDiv = $("#plannerDiv");
-
-  // emptying the planner Div if any unsaved text is present
-
-  $plannerDiv.empty();
 
   for (let i = 0; i < 9; i++) {
     // calculating hour from index
@@ -60,7 +59,7 @@ $(document).ready(function () {
 
     // row components
     let $dailyPlan = $("<input>");
-    $dailyPlan.attr("class", "input-group");
+    $dailyPlan.addClass("input-group");
     $dailyPlan.attr("id", "input-"+i);
 
     // // creating column to input text
@@ -84,7 +83,7 @@ $(document).ready(function () {
 
     // add row to planner container
     $plannerDiv.append($rowDiv);
-  };
+  }};
 
   $(document).on("click", "i", function (e) {
     e.preventDefault();
@@ -94,4 +93,15 @@ $(document).ready(function () {
     }
     localStorage.setItem("storedPlans", JSON.stringify(planArray));
   });
+
+  function displayStoredPlans() {
+
+    planArray = JSON.parse(localStorage.getItem("storedPlans"));
+    console.log(planArray);
+    console.log(planArray[0])
+    for (let i=0; i<10; i++) {
+      $(`#input-${i}`).val(planArray[i])
+
+    }
+  }
 })

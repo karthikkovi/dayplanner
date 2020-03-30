@@ -1,0 +1,12 @@
+.col-md-2 {
+    background-color: #cff1ef;
+    border: solid;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.input-group {
+    background-color: #fbcffc;
+    border: none;
+    padding: 1rem;
+}

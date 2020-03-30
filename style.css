@@ -1,12 +1,22 @@
 .col-md-2 {
-    background-color: #cff1ef;
+    background-color: #dee3e2;
     border: solid;
     border-radius: 1rem;
     padding: 1rem;
+    text-align: center;
 }
 
 .input-group {
-    background-color: #fbcffc;
+    background-color: #116979;
     border: none;
     padding: 1rem;
+    border-radius: 1rem;
+}
+
+.col-md-1 {
+    background-color: #18b0b0;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 1rem;
+    margin-bottom: 0.25rem;
 }

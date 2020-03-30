@@ -30,6 +30,16 @@ $(document).ready(function () {
     // calculating hour from index
     let hour = i + 9;
 
+    // format hours for display
+    let ampm = "";
+
+    if (hour > 12) {
+      ampm = "pm"
+      hour -= 12;
+    } else {
+      ampm = "am"
+    }
+
     //  row components
     let $rowDiv = $("<div>");
     $rowDiv.addClass("row");
@@ -41,16 +51,6 @@ $(document).ready(function () {
     // create timeBox element (contains time)
     const $timeBox = $("<span>");
 
-    // format hours for display
-    let ampm = "";
-
-    if (hour > 12) {
-      ampm = "pm"
-      hour -= 12;
-    } else {
-      ampm = "am"
-    }
-
     // populate timeBox with time
     $timeBox.text(`${hour} ${ampm}`);
 
@@ -60,19 +60,14 @@ $(document).ready(function () {
 
     // row components
     let $dailyPlan = $("<input>");
-
-    $dailyPlan.attr("id", `input-${i}`);
-    $dailyPlan.attr("type", "text");
     $dailyPlan.attr("class", "input-group");
+    $dailyPlan.attr("id", "input-"+i);
 
-    // access index from data array for hour 
-    $dailyPlan.val(planArray[i]);
-
-    // creating column to input text
+    // // creating column to input text
     let $inputDiv = $("<div>");
     $inputDiv.addClass("col-md-9");
 
-    // add col width and row component to row
+    // // add col width and row component to row
     $rowDiv.append($inputDiv);
     $inputDiv.append($dailyPlan);
 
@@ -94,20 +89,9 @@ $(document).ready(function () {
   $(document).on("click", "i", function (e) {
     e.preventDefault();
 
-    let plans = document.querySelectorAll(".input-group")
-    console.log(plans)
-
-    // for(let i=0; i < 
-
-
-
-
-    let $index = $(this).attr("save-id");
-    let inputId = "#input-" + $index;
-    let $value = $(inputId).val();
-
-    planArray[$index] = $value;
-
+    for(let i=0; i<10; i++){
+    planArray[i] = $(`#input-${i}`).val()
+    }
     localStorage.setItem("storedPlans", JSON.stringify(planArray));
   });
 })

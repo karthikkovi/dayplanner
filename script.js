@@ -39,13 +39,11 @@ $(document).ready(function () {
       ampm = "am"
     }
 
-    //  row components
-    let $rowDiv = $("<div>");
-    $rowDiv.addClass("row");
+    //  Creating the row component
+    let $rowDiv = $("<div>").addClass("row");
 
     // Creating 2 width col for times
-    let $timeDiv = $("<div>");
-    $timeDiv.addClass("col-md-2");
+    let $timeDiv = $("<div>").addClass("col-md-2");
 
     // create timeBox element (contains time)
     const $timeBox = $("<span>");
@@ -58,13 +56,11 @@ $(document).ready(function () {
     $timeDiv.append($timeBox);
 
     // Creating input groups
-    let $dailyPlan = $("<input>");
-    $dailyPlan.addClass("input-group");
+    let $dailyPlan = $("<input>").addClass("input-group");
     $dailyPlan.attr("id", "input-"+i);
 
     // creating 9 width col for input text
-    let $inputDiv = $("<div>");
-    $inputDiv.addClass("col-md-9");
+    let $inputDiv = $("<div>").addClass("col-md-9");
 
     // add input column to the row
     $rowDiv.append($inputDiv);
@@ -72,12 +68,11 @@ $(document).ready(function () {
 
     // Creating the 1 width column for the save buttons.
 
-    let $saveDiv = $("<div>");
-    $saveDiv.addClass("col-md-1");
+    let $saveDiv = $("<div>").addClass("col-md-1");
 
     let $saveBtn = $("<i>");
     $saveBtn.attr("id", `saveid-${i}`);
-    $saveBtn.addClass("fas fa-save saveIcon btn");
+    $saveBtn.addClass("fa fa-save saveIcon btn");
 
     // add save column to the row
     $rowDiv.append($saveDiv);
